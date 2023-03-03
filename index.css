@@ -1,0 +1,27 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background-color: black;
+}
+#searchSong{
+    height: 100px;
+    font-size: 70px;
+    width: 80%;
+    margin-top: 15%;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-bottom: 2px solid grey;
+}
+#searchBtn{
+    width: 200px;
+    color: white;
+    border: 2px solid wheat;
+    height:40px;
+    margin-top: 50px;
+    font-size: 28px;
+    cursor: pointer;
+    background-color: transparent;
+}
