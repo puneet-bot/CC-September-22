@@ -31,14 +31,14 @@ async function fetchMusic(url, query) {
 
 async function processData(info) {
 	console.log(info)
-	alert('here')
+	// alert('here')
 	if(info.length>=1){
 		for(let i=0;i<info.length;i++){
 			// if(info[i].data)
-			alert('hhhh')
 			await localStorage.setItem(`Song-${i}`,info[i].data.uri);
 		}
-		// secondfunction();
+		window.location.href = "index2.html";
+		secondfunction();
 	}
 }
 
