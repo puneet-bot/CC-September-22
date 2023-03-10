@@ -6,29 +6,40 @@ const options = {
 	}
 };
 
-const songSearchInput=document.getElementById("searchSong");
-const songSearchButton= document.getElementById("searchBtn");
+const songSearchInput = document.getElementById("searchSong");
+const songSearchButton = document.getElementById("searchBtn");
 
-songSearchButton.addEventListener('click',function(){
-	if(songSearchInput.value){
-		fetchMusic(`https://spotify23.p.rapidapi.com/search/?q=${songSearchInput.value}&type=multi&offset=0&limit=10&numberOfTopResults=5`)
+songSearchButton.addEventListener('click', function () {
+	// localStorage.clear();
+	if (songSearchInput.value) {
+		fetchMusic(`https://spotify23.p.rapidapi.com/search/?q=${songSearchInput.value}&type=multi&offset=0&limit=10&numberOfTopResults=5`, songSearchInput.value)
 	}
 
 })
 
-	
-	
-	async function fetchMusic(url){
-		var response=await fetch(url,options);
-		var data=await response.json();
-		console.log(data);
-		// processData(data.Stages)
-	}
 
-	// function processData(info){
-	// 	// for(let i=0;i<info.length;i++){
-	// 	// 	console.log(info[i].Cnm)
-	// 	// }
-	// }
+
+async function fetchMusic(url, query) {
+	var response = await fetch(url, options);
+	var data = await response.json();
+	console.log(data);
+	processData(data.albums.items)
+	// localStorage.setItem(query,JSON.stringify(data));
+	// secondfunction(query);
+
+}
+
+async function processData(info) {
+	console.log(info)
+	alert('here')
+	if(info.length>=1){
+		for(let i=0;i<info.length;i++){
+			// if(info[i].data)
+			alert('hhhh')
+			await localStorage.setItem(`Song-${i}`,info[i].data.uri);
+		}
+		// secondfunction();
+	}
+}
 
 
